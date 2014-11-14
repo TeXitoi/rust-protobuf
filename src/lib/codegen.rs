@@ -1102,6 +1102,7 @@ fn write_message_struct(w: &mut IndentWriter) {
             w.field_entry(field.name.as_slice(), format!("{}", field.full_storage_type()));
         });
         w.field_entry("unknown_fields", "::protobuf::UnknownFields");
+        w.field_entry("cached_size", "::std::cell::Cell<u32>");
     });
 }
 
@@ -1268,6 +1269,7 @@ fn write_message_default_instance(w: &mut IndentWriter) {
                     w.field_default();
                 });
                 w.field_entry("unknown_fields", "::protobuf::UnknownFields::new()");
+                w.field_entry("cached_size", "::std::cell::Cell::new(0)");
             });
         });
     });
